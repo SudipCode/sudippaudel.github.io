@@ -720,8 +720,17 @@ header .navbar a:hover::before{
 .Design .row .progress .bar span{
     display: block;
     height: 100%;
-    background: rgb(91, 1, 79);
+    background: linear-gradient(90deg, var(--theme-color), var(--theme-accent));
     border-radius: 5rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: skill-bar-fill 10s ease-in-out infinite;
+}
+
+@keyframes skill-bar-fill{
+    to{
+        transform: scaleX(1);
+    }
 }
 
 .Design .row .progress .bar-1-1 span{
