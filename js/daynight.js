@@ -15,7 +15,7 @@ const dayNightToggle = document.querySelector('#day-night-toggle');
 const themeButtons = document.querySelectorAll('.theme-option');
 
 const setTheme = (themeName) => {
-    document.body.classList.remove('theme-red', 'theme-yellow', 'theme-green', 'theme-pink');
+    document.body.classList.remove('theme-red', 'theme-yellow', 'theme-green', 'theme-teal');
     document.body.classList.add(`theme-${themeName}`);
     localStorage.setItem('siteTheme', themeName);
     themeButtons.forEach((button) => {
