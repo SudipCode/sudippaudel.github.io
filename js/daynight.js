@@ -9,13 +9,53 @@ window.onscroll = () =>{
     header.classList.remove('active');
 }
 
-let themeToggler = document.querySelector('#theme-toggler');
+const themePanel = document.querySelector('#theme-panel');
+const themeToggler = document.querySelector('#theme-toggler');
+const dayNightToggle = document.querySelector('#day-night-toggle');
+const themeButtons = document.querySelectorAll('.theme-option');
 
-themeToggler.onclick = () =>{
-    themeToggler.classList.toggle('fa-sun');
-    if(themeToggler.classList.contains('fa-sun')){
-        document.body.classList.add('active');
-    }else{
-        document.body.classList.remove('active');
-    }
+const setTheme = (themeName) => {
+    document.body.classList.remove('theme-red', 'theme-yellow', 'theme-green', 'theme-pink');
+    document.body.classList.add(`theme-${themeName}`);
+    localStorage.setItem('siteTheme', themeName);
+    themeButtons.forEach((button) => {
+        const isActive = button.dataset.theme === themeName;
+        button.classList.toggle('active', isActive);
+    });
+};
+
+const savedTheme = localStorage.getItem('siteTheme') || 'red';
+setTheme(savedTheme);
+
+if (themeToggler) {
+    themeToggler.onclick = () => {
+        themePanel.classList.toggle('open');
+    };
 }
+
+if (dayNightToggle) {
+    const updateDayNightIcon = () => {
+        const isNight = document.body.classList.contains('active');
+        dayNightToggle.innerHTML = isNight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    };
+
+    const savedMode = localStorage.getItem('siteMode');
+    if (savedMode === 'day') {
+        document.body.classList.add('active');
+    }
+    updateDayNightIcon();
+
+    dayNightToggle.onclick = () => {
+        document.body.classList.toggle('active');
+        const isNight = document.body.classList.contains('active');
+        localStorage.setItem('siteMode', isNight ? 'day' : 'night');
+        updateDayNightIcon();
+    };
+}
+
+themeButtons.forEach((button) => {
+    button.onclick = () => {
+        setTheme(button.dataset.theme);
+        themePanel.classList.remove('open');
+    };
+});
