@@ -4,7 +4,8 @@
     --orange:#d14605;
     --green:#099e47;
     --black:#444;
-    ---skyblue:#3076c5;
+    --skyblue:#3076c5;
+    --Aqua:#066b5a;
     --blue:rgb(9, 29, 85);
     --gold:rgb(224, 187, 21);
     --rad:rgb(182, 7, 7);
@@ -475,12 +476,12 @@ header .navbar a:hover::before{
 
 .home .content img{
     
-    width:30rem;
-    border-radius: 15rem 10rem;
+    width: 28rem ;
+    border-radius: 17rem 9rem 5rem;
     object-fit: cover;
-    border:1rem solid var(---skyblue);
+    border:1rem solid var(--Aqua);
     border-left: rgb(83, 6, 12);
-    box-shadow: 0 .5rem 2rem rgb(5, 0, 49);
+    box-shadow: 0 .5rem 2rem rgba(1, 85, 85, 0.921);
     cursor: pointer;
 }
 
@@ -499,7 +500,7 @@ header .navbar a:hover::before{
 
 .home .content p{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color:rgba(2, 2, 56, 0.76);
+    color:rgba(13, 13, 141, 0.76);
     font-size: 3.2rem;
     line-height: 3;
 }
