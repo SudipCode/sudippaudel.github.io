@@ -1,4 +1,10 @@
 
+const getParticleThemeColor = () => getComputedStyle(document.body)
+  .getPropertyValue('--theme-color')
+  .trim() || '#0f766e';
+
+const particleThemeColor = getParticleThemeColor();
+
 particlesJS('particles-js',
   
   {
@@ -11,13 +17,13 @@ particlesJS('particles-js',
         }
       },
       "color": {
-        "value": "#000000"
+        "value": particleThemeColor
       },
       "shape": {
         "type": "star",
         "stroke": {
           "width": 0,
-          "color": "#000000"
+          "color": particleThemeColor
         },
         "polygon": {
           "nb_sides": 12
@@ -51,7 +57,7 @@ particlesJS('particles-js',
       "line_linked": {
         "enable": true,
         "distance": 250,
-        "color": "#000000",
+        "color": particleThemeColor,
         "opacity": .6,
         "width": 1
       },
@@ -119,3 +125,19 @@ particlesJS('particles-js',
   }
 
 );
+
+window.updateParticleTheme = () => {
+  const particles = window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS;
+
+  if (!particles) {
+    return;
+  }
+
+  const color = getParticleThemeColor();
+  particles.particles.color.value = color;
+  particles.particles.line_linked.color = color;
+
+  if (particles.fn && particles.fn.particlesRefresh) {
+    particles.fn.particlesRefresh();
+  }
+};

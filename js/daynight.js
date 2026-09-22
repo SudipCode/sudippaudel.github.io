@@ -22,9 +22,13 @@ const setTheme = (themeName) => {
         const isActive = button.dataset.theme === themeName;
         button.classList.toggle('active', isActive);
     });
+
+    if (window.updateParticleTheme) {
+        window.updateParticleTheme();
+    }
 };
 
-const savedTheme = localStorage.getItem('siteTheme') || 'red';
+const savedTheme = localStorage.getItem('siteTheme') || 'teal';
 setTheme(savedTheme);
 
 if (themeToggler) {

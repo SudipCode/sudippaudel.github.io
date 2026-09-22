@@ -11,17 +11,70 @@ window.onscroll = () =>{
     header.classList.remove('active');
 };
 
-var typed = new Typed('.typing-text', {
+if (document.querySelector('.typing-text')) {
+  var typed = new Typed('.typing-text', {
     strings : ['front end developer', 'Sub-overseer', 'Web designer', 'graphic designer', 'web developer' ],
     loop : true,
     typeSpeed : 30
-});
+  });
+}
 
-VanillaTilt.init(document.querySelectorAll('.tilt'),{
+if (typeof VanillaTilt !== 'undefined') {
+  VanillaTilt.init(document.querySelectorAll('.tilt'),{
     max:30
-});
+  });
+}
+
+const skillsSection = document.querySelector('.Design');
+
+const animateSkillValues = () => {
+  document.querySelectorAll('.progress h3 span[data-value]').forEach((label) => {
+    label.textContent = '0%';
+  });
+
+  document.querySelectorAll('.progress h3 span[data-value]').forEach((label) => {
+    const target = Number(label.dataset.value);
+    const start = performance.now();
+
+    const updateLabel = (now) => {
+      const progress = Math.min((now - start) / 2000, 1);
+      label.textContent = `${Math.round(target * progress)}%`;
+      if (progress < 1) {
+        requestAnimationFrame(updateLabel);
+      }
+    };
+
+    requestAnimationFrame(updateLabel);
+  });
+
+};
+
+const replaySkillAnimation = () => {
+  skillsSection.classList.remove('is-visible');
+  void skillsSection.offsetWidth;
+  skillsSection.classList.add('is-visible');
+  animateSkillValues();
+};
+
+if (skillsSection && 'IntersectionObserver' in window) {
+  const skillsObserver = new IntersectionObserver((entries, observer) => {
+    if (entries[0].isIntersecting) {
+      skillsSection.classList.add('is-visible');
+      animateSkillValues();
+      setInterval(replaySkillAnimation, 20000);
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+
+  skillsObserver.observe(skillsSection);
+} else if (skillsSection) {
+  skillsSection.classList.add('is-visible');
+  animateSkillValues();
+    setInterval(replaySkillAnimation, 20000);
+}
 
 window.addEventListener('load', () => {
+
     const header2 = document.querySelector('.header .header-2');
 
     if (header2) {
