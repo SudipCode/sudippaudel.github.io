@@ -1,12 +1,19 @@
 
-menu.onclick = () =>{
-    menu.classList.toggle('fa-times');
-    header.classList.toggle('active');
+const dayNightMenu = document.querySelector('#menu-bars');
+const dayNightHeader = document.querySelector('header');
+
+if (dayNightMenu && dayNightHeader) {
+    dayNightMenu.onclick = () =>{
+        dayNightMenu.classList.toggle('fa-times');
+        dayNightHeader.classList.toggle('active');
+    };
 }
 
 window.onscroll = () =>{
-    menu.classList.remove('fa-times');
-    header.classList.remove('active');
+    if (dayNightMenu && dayNightHeader) {
+        dayNightMenu.classList.remove('fa-times');
+        dayNightHeader.classList.remove('active');
+    }
 }
 
 const themePanel = document.querySelector('#theme-panel');
@@ -44,7 +51,7 @@ if (dayNightToggle) {
     };
 
     const savedMode = localStorage.getItem('siteMode');
-    if (savedMode === 'day') {
+    if (savedMode === 'night') {
         document.body.classList.add('active');
     }
     updateDayNightIcon();
@@ -52,7 +59,7 @@ if (dayNightToggle) {
     dayNightToggle.onclick = () => {
         document.body.classList.toggle('active');
         const isNight = document.body.classList.contains('active');
-        localStorage.setItem('siteMode', isNight ? 'day' : 'night');
+        localStorage.setItem('siteMode', isNight ? 'night' : 'day');
         updateDayNightIcon();
     };
 }

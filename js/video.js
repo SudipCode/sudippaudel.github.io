@@ -17,3 +17,40 @@ video.onclick = () =>{
 };
 
 });
+
+const youtubeGrid = document.querySelector('#youtube-grid');
+
+const youtubeVideoIds = [];
+
+const renderYoutubeVideos = () => {
+    if (!youtubeGrid) {
+        return;
+    }
+
+    youtubeGrid.innerHTML = '';
+    youtubeVideoIds.forEach((videoId) => {
+        const card = document.createElement('article');
+        card.className = 'youtube-card';
+
+        const frame = document.createElement('iframe');
+        frame.src = `https://www.youtube.com/embed/${videoId}`;
+        frame.title = 'YouTube video';
+        frame.loading = 'lazy';
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        frame.allowFullscreen = true;
+
+        const cardFooter = document.createElement('div');
+        cardFooter.className = 'youtube-card-footer';
+
+        const cardTitle = document.createElement('span');
+        cardTitle.textContent = 'YouTube video';
+
+        cardFooter.append(cardTitle);
+        card.append(frame, cardFooter);
+        youtubeGrid.append(card);
+    });
+};
+
+if (youtubeGrid) {
+    renderYoutubeVideos();
+}
