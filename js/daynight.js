@@ -34,7 +34,7 @@ const initNepaliClock = () => {
         <div class="nepali-clock-meta">
             <span class="nepali-clock-label">नेपाल समय</span>
             <div class="nepali-widget-actions">
-                <button class="nepali-calendar-toggle" type="button" aria-expanded="false">Nepali Calendar</button>
+                <button class="nepali-calendar-toggle" type="button" aria-expanded="false">english calendar</button>
                 <button class="nepali-hide-toggle" type="button" aria-label="Hide Nepal date and time">Hide</button>
             </div>
         </div>
@@ -51,45 +51,32 @@ const initNepaliClock = () => {
 
     const updateCalendar = () => {
         const currentDate = new Date();
-        let nepalDate = '';
-
-        try {
-            nepalDate = new Intl.DateTimeFormat('ne-NP-u-ca-nepali', {
-                timeZone: 'Asia/Kathmandu',
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }).format(currentDate);
-        } catch (error) {
-            nepalDate = new Intl.DateTimeFormat('en-NP-u-ca-nepali', {
-                timeZone: 'Asia/Kathmandu',
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }).format(currentDate);
-        }
+        const englishDate = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Kathmandu',
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }).format(currentDate);
 
         if (calendarPanel) {
-            calendarPanel.textContent = nepalDate;
+            calendarPanel.textContent = englishDate;
         }
     };
 
     const updateClock = () => {
-        const formatter = new Intl.DateTimeFormat('en-NP-u-ca-nepali', {
+        const formatter = new Intl.DateTimeFormat('en-US', {
             timeZone: 'Asia/Kathmandu',
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
-            hour12: true,
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+            hour12: true
         });
 
+        const nepaliTime = formatter.format(new Date());
+
         if (valueNode) {
-            valueNode.textContent = formatter.format(new Date());
+            valueNode.textContent = nepaliTime;
         }
 
         updateCalendar();

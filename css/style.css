@@ -464,6 +464,7 @@ header .navbar a:hover::before{
     gap: .6rem;
     min-width: 20rem;
     max-width: 26rem;
+    max-height: 18rem;
     padding: .8rem 1rem;
     border-radius: 1.2rem;
     background: linear-gradient(135deg, var(--theme-color), var(--theme-accent));
@@ -475,6 +476,8 @@ header .navbar a:hover::before{
     user-select: none;
     touch-action: none;
     cursor: move;
+    resize: both;
+    overflow: auto;
     transition: transform .25s ease, opacity .25s ease, max-width .25s ease, padding .25s ease, background .25s ease;
 }
 
