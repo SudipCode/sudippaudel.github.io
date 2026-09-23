@@ -30,7 +30,10 @@ const initNepaliClock = () => {
     const clock = document.createElement('div');
     clock.id = 'nepali-time-widget';
     clock.innerHTML = `
-        <div class="nepali-drag-handle" aria-label="Drag widget"><i class="fas fa-grip-lines"></i></div>
+        <div class="nepali-widget-top">
+            <div class="nepali-drag-handle" aria-label="Drag widget"><i class="fas fa-grip-lines"></i></div>
+            <button class="nepali-close-toggle" type="button" aria-label="Close Nepal date and time">×</button>
+        </div>
         <div class="nepali-clock-meta">
             <span class="nepali-clock-label">नेपाल समय</span>
             <div class="nepali-widget-actions">
@@ -48,6 +51,7 @@ const initNepaliClock = () => {
     const calendarToggle = clock.querySelector('.nepali-calendar-toggle');
     const calendarPanel = clock.querySelector('.nepali-calendar-panel');
     const hideToggle = clock.querySelector('.nepali-hide-toggle');
+    const closeToggle = clock.querySelector('.nepali-close-toggle');
 
     const updateCalendar = () => {
         const currentDate = new Date();
@@ -103,6 +107,27 @@ const initNepaliClock = () => {
         hideToggle.onclick = () => {
             const isCollapsed = clock.classList.contains('collapsed');
             setCollapsed(!isCollapsed);
+        };
+    }
+
+    if (closeToggle) {
+        closeToggle.onclick = () => {
+            clock.style.display = 'none';
+
+            let reopenButton = document.getElementById('nepali-time-reopen');
+            if (!reopenButton) {
+                reopenButton = document.createElement('button');
+                reopenButton.id = 'nepali-time-reopen';
+                reopenButton.type = 'button';
+                reopenButton.innerHTML = '<i class="fas fa-clock"></i>';
+                reopenButton.setAttribute('aria-label', 'Show Nepal date and time');
+                document.body.appendChild(reopenButton);
+
+                reopenButton.onclick = () => {
+                    clock.style.display = 'flex';
+                    reopenButton.remove();
+                };
+            }
         };
     }
 

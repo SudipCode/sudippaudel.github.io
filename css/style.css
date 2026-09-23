@@ -481,11 +481,18 @@ header .navbar a:hover::before{
     transition: transform .25s ease, opacity .25s ease, max-width .25s ease, padding .25s ease, background .25s ease;
 }
 
+.nepali-widget-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
 .nepali-drag-handle{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex: 1;
     cursor: grab;
     color: rgba(255,255,255,.8);
     font-size: 1.2rem;
@@ -494,6 +501,40 @@ header .navbar a:hover::before{
 
 .nepali-drag-handle:active{
     cursor: grabbing;
+}
+
+.nepali-close-toggle{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.nepali-close-toggle:hover{
+    background: rgba(255,255,255,.22);
+}
+
+#nepali-time-reopen{
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1300;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--theme-color), var(--theme-accent));
+    color: #fff;
+    box-shadow: 0 1rem 2rem rgba(15,23,42,.18);
+    cursor: pointer;
+    font-size: 1.8rem;
 }
 
 #nepali-time-widget.collapsed{
