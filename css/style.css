@@ -472,7 +472,25 @@ header .navbar a:hover::before{
     box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.18);
     backdrop-filter: blur(10px);
     text-transform: none;
+    user-select: none;
+    touch-action: none;
+    cursor: move;
     transition: transform .25s ease, opacity .25s ease, max-width .25s ease, padding .25s ease, background .25s ease;
+}
+
+.nepali-drag-handle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: grab;
+    color: rgba(255,255,255,.8);
+    font-size: 1.2rem;
+    opacity: .9;
+}
+
+.nepali-drag-handle:active{
+    cursor: grabbing;
 }
 
 #nepali-time-widget.collapsed{

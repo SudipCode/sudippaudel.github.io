@@ -30,6 +30,7 @@ const initNepaliClock = () => {
     const clock = document.createElement('div');
     clock.id = 'nepali-time-widget';
     clock.innerHTML = `
+        <div class="nepali-drag-handle" aria-label="Drag widget"><i class="fas fa-grip-lines"></i></div>
         <div class="nepali-clock-meta">
             <span class="nepali-clock-label">नेपाल समय</span>
             <div class="nepali-widget-actions">
@@ -42,6 +43,7 @@ const initNepaliClock = () => {
     `;
     document.body.appendChild(clock);
 
+    const dragHandle = clock.querySelector('.nepali-drag-handle');
     const valueNode = clock.querySelector('.nepali-clock-value');
     const calendarToggle = clock.querySelector('.nepali-calendar-toggle');
     const calendarPanel = clock.querySelector('.nepali-calendar-panel');
@@ -117,6 +119,56 @@ const initNepaliClock = () => {
         };
     }
 
+    const initDrag = () => {
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        const move = (clientX, clientY) => {
+            const maxX = window.innerWidth - clock.offsetWidth;
+            const maxY = window.innerHeight - clock.offsetHeight;
+            const nextX = Math.min(Math.max(clientX - offsetX, 10), Math.max(maxX, 10));
+            const nextY = Math.min(Math.max(clientY - offsetY, 10), Math.max(maxY, 10));
+            clock.style.left = `${nextX}px`;
+            clock.style.top = `${nextY}px`;
+            clock.style.right = 'auto';
+            clock.style.bottom = 'auto';
+        };
+
+        const startDrag = (event) => {
+            if (event.target.closest('button')) return;
+            isDragging = true;
+            const rect = clock.getBoundingClientRect();
+            const pointX = event.clientX ?? event.touches?.[0]?.clientX ?? rect.left;
+            const pointY = event.clientY ?? event.touches?.[0]?.clientY ?? rect.top;
+            offsetX = pointX - rect.left;
+            offsetY = pointY - rect.top;
+            clock.style.transition = 'none';
+        };
+
+        const endDrag = () => {
+            isDragging = false;
+            clock.style.transition = '';
+        };
+
+        const onMove = (event) => {
+            if (!isDragging) return;
+            const pointX = event.clientX ?? event.touches?.[0]?.clientX;
+            const pointY = event.clientY ?? event.touches?.[0]?.clientY;
+            if (typeof pointX === 'number' && typeof pointY === 'number') {
+                move(pointX, pointY);
+            }
+        };
+
+        dragHandle?.addEventListener('pointerdown', startDrag);
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', endDrag);
+        window.addEventListener('pointercancel', endDrag);
+        window.addEventListener('touchmove', onMove, { passive: true });
+        window.addEventListener('touchend', endDrag, { passive: true });
+    };
+
+    initDrag();
     setCollapsed(false);
     updateClock();
     setInterval(updateClock, 1000);
