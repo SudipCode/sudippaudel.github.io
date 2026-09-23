@@ -466,13 +466,13 @@ header .navbar a:hover::before{
     max-width: 26rem;
     padding: .8rem 1rem;
     border-radius: 1.2rem;
-    background: rgba(15, 118, 110, 0.9);
+    background: linear-gradient(135deg, var(--theme-color), var(--theme-accent));
     color: #f8fafc;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.18);
     backdrop-filter: blur(10px);
     text-transform: none;
-    transition: transform .25s ease, opacity .25s ease, max-width .25s ease, padding .25s ease;
+    transition: transform .25s ease, opacity .25s ease, max-width .25s ease, padding .25s ease, background .25s ease;
 }
 
 #nepali-time-widget.collapsed{
@@ -564,17 +564,18 @@ header .navbar a:hover::before{
 
 @media (max-width: 768px) {
     #nepali-time-widget {
-        top: .8rem;
-        left: 6.8rem;
-        right: .8rem;
+        top: auto;
+        bottom: 1rem;
+        left: auto;
+        right: 1rem;
         min-width: 0;
         max-width: none;
         padding: .7rem .9rem;
     }
 
     #nepali-time-widget.collapsed {
-        left: auto;
-        right: .8rem;
+        right: 1rem;
+        bottom: 1rem;
         min-width: 0;
         max-width: 12rem;
     }
@@ -590,13 +591,15 @@ header .navbar a:hover::before{
 
 @media (max-width: 480px) {
     #nepali-time-widget {
-        left: 5.8rem;
+        bottom: .8rem;
+        right: .8rem;
+        left: auto;
         padding: .6rem .7rem;
     }
 
     #nepali-time-widget.collapsed {
-        left: auto;
-        right: .6rem;
+        right: .8rem;
+        bottom: .8rem;
     }
 
     .nepali-clock-meta {
