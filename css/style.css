@@ -1681,14 +1681,66 @@ body.active.blogs-page .container .main-video .title{
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.2rem;
-    max-width: 80rem;
+    max-width: 90rem;
     margin: 0 auto 3rem;
+}
+
+.tool-card{
+    flex: 1 1 39rem;
+    max-width: 42rem;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    background: rgba(255,255,255,.7);
+    border: 1px solid rgba(15,118,110,.12);
+    box-shadow: 0 1rem 2.5rem rgba(16,42,67,.08);
+}
+
+.tool-card label{
+    display: block;
+    margin-bottom: .8rem;
+    color: var(--blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.tool-row{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.tool-input{
+    flex: 1;
+    min-width: 0;
+    padding: 1.1rem 1.2rem;
+    border-radius: .8rem;
+    border: 1px solid rgba(15,118,110,.2);
+    background: rgba(255,255,255,.95);
+    color: var(--black);
+    font-size: 1.5rem;
+    text-transform: none;
+}
+
+.tool-input:focus{
+    border-color: var(--theme-color);
+    box-shadow: 0 0 0 .3rem rgba(45,212,191,.14);
 }
 
 .blog-tool-btn{
     margin-top: 0;
-    min-width: 22rem;
+    min-width: 18rem;
     text-align: center;
+}
+
+@media (max-width: 600px){
+    .tool-row{
+        flex-direction: column;
+    }
+
+    .blog-tool-btn{
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 .youtube-section{

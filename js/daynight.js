@@ -54,7 +54,7 @@ const initNepaliClock = () => {
         let nepalDate = '';
 
         try {
-            nepalDate = new Intl.DateTimeFormat('en-US-u-ca-nepali', {
+            nepalDate = new Intl.DateTimeFormat('ne-NP-u-ca-nepali', {
                 timeZone: 'Asia/Kathmandu',
                 weekday: 'long',
                 year: 'numeric',
@@ -62,7 +62,7 @@ const initNepaliClock = () => {
                 day: 'numeric'
             }).format(currentDate);
         } catch (error) {
-            nepalDate = new Intl.DateTimeFormat('en-NP', {
+            nepalDate = new Intl.DateTimeFormat('en-NP-u-ca-nepali', {
                 timeZone: 'Asia/Kathmandu',
                 weekday: 'long',
                 year: 'numeric',
@@ -77,7 +77,7 @@ const initNepaliClock = () => {
     };
 
     const updateClock = () => {
-        const formatter = new Intl.DateTimeFormat('en-NP', {
+        const formatter = new Intl.DateTimeFormat('en-NP-u-ca-nepali', {
             timeZone: 'Asia/Kathmandu',
             hour: '2-digit',
             minute: '2-digit',

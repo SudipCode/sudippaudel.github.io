@@ -53,9 +53,22 @@
         <p class="intro-copy">A small collection of experiments, builds, and moments from the workbench.</p>
     </div>
 
-    <div class="blog-tools" aria-label="Useful tools">
-        <a class="btn blog-tool-btn" href="https://www.y2mate.com/" target="_blank" rel="noopener noreferrer">YouTube Video Downloader</a>
-        <a class="btn blog-tool-btn" href="https://www.y2mate.com/youtube-to-mp3" target="_blank" rel="noopener noreferrer">MP3 Converter</a>
+    <div class="blog-tools is-hidden" aria-label="Useful tools" style="display: none;">
+        <div class="tool-card">
+            <label for="youtube-video-link">Paste YouTube video link</label>
+            <div class="tool-row">
+                <input id="youtube-video-link" class="tool-input" type="url" placeholder="https://youtu.be/..." />
+                <button class="btn blog-tool-btn" type="button" data-tool="video">Download Video</button>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <label for="youtube-audio-link">Paste YouTube link for MP3</label>
+            <div class="tool-row">
+                <input id="youtube-audio-link" class="tool-input" type="url" placeholder="https://youtu.be/..." />
+                <button class="btn blog-tool-btn" type="button" data-tool="audio">Convert MP3</button>
+            </div>
+        </div>
     </div>
 
 <div class="container">
@@ -149,6 +162,29 @@
 <script src="js/daynight.js"></script>
 <script src="js/video.js"></script>
 <script src="js/loader.js"></script>
+<script>
+    document.querySelectorAll('[data-tool]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const tool = button.dataset.tool;
+            const inputId = tool === 'video' ? 'youtube-video-link' : 'youtube-audio-link';
+            const input = document.getElementById(inputId);
+            const value = input ? input.value.trim() : '';
+
+            if (!value) {
+                alert('Please paste a YouTube video link first.');
+                input && input.focus();
+                return;
+            }
+
+            const encodedUrl = encodeURIComponent(value);
+            const destination = tool === 'video'
+                ? `https://www.y2mate.com/?url=${encodedUrl}`
+                : `https://www.y2mate.com/youtube-to-mp3?url=${encodedUrl}`;
+
+            window.open(destination, '_blank', 'noopener,noreferrer');
+        });
+    });
+</script>
 
 
 <!-- vanilla-tilt.js link  -->
