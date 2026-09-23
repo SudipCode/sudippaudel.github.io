@@ -472,6 +472,13 @@ header .navbar a:hover::before{
     box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.18);
     backdrop-filter: blur(10px);
     text-transform: none;
+    transition: transform .25s ease, opacity .25s ease, max-width .25s ease, padding .25s ease;
+}
+
+#nepali-time-widget.collapsed{
+    min-width: 0;
+    max-width: 13rem;
+    padding: .7rem .9rem;
 }
 
 .nepali-clock-meta{
@@ -488,19 +495,28 @@ header .navbar a:hover::before{
     text-transform: uppercase;
 }
 
-.nepali-calendar-toggle{
-    padding: .5rem .8rem;
+.nepali-widget-actions{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+
+.nepali-calendar-toggle,
+.nepali-hide-toggle{
+    padding: .45rem .7rem;
     border-radius: 999px;
     background: rgba(255,255,255,.18);
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
     border: 1px solid rgba(255,255,255,.2);
 }
 
 .nepali-calendar-toggle.active,
-.nepali-calendar-toggle:hover{
+.nepali-calendar-toggle:hover,
+.nepali-hide-toggle:hover{
     background: rgba(255,255,255,.28);
 }
 
@@ -519,6 +535,15 @@ header .navbar a:hover::before{
     color: #eff6ff;
     font-size: 1.2rem;
     line-height: 1.5;
+}
+
+#nepali-time-widget.collapsed .nepali-clock-value,
+#nepali-time-widget.collapsed .nepali-calendar-panel{
+    display: none;
+}
+
+#nepali-time-widget.collapsed .nepali-clock-meta{
+    justify-content: center;
 }
 
 #menu-bars{
@@ -540,11 +565,18 @@ header .navbar a:hover::before{
 @media (max-width: 768px) {
     #nepali-time-widget {
         top: .8rem;
-        left: 7.2rem;
+        left: 6.8rem;
         right: .8rem;
         min-width: 0;
         max-width: none;
         padding: .7rem .9rem;
+    }
+
+    #nepali-time-widget.collapsed {
+        left: auto;
+        right: .8rem;
+        min-width: 0;
+        max-width: 12rem;
     }
 
     .nepali-clock-value {
@@ -558,8 +590,13 @@ header .navbar a:hover::before{
 
 @media (max-width: 480px) {
     #nepali-time-widget {
-        left: 6.2rem;
+        left: 5.8rem;
         padding: .6rem .7rem;
+    }
+
+    #nepali-time-widget.collapsed {
+        left: auto;
+        right: .6rem;
     }
 
     .nepali-clock-meta {
@@ -567,8 +604,14 @@ header .navbar a:hover::before{
         align-items: flex-start;
     }
 
-    .nepali-calendar-toggle {
+    .nepali-widget-actions {
         width: 100%;
+        justify-content: space-between;
+    }
+
+    .nepali-calendar-toggle,
+    .nepali-hide-toggle {
+        flex: 1;
     }
 }
 
@@ -930,6 +973,18 @@ header .navbar a:hover::before{
 
 .contact .row .image img{
     width: 100%;
+}
+
+.contact-gif-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.contact-gif-button{
+    margin-top: 0;
+    width: fit-content;
 }
 
 .contact .row form{
@@ -1598,6 +1653,21 @@ body.active.blogs-page .container .main-video .title{
         width: 9rem;
         height: 5.2rem;
     }
+}
+
+.blog-tools{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    max-width: 80rem;
+    margin: 0 auto 3rem;
+}
+
+.blog-tool-btn{
+    margin-top: 0;
+    min-width: 22rem;
+    text-align: center;
 }
 
 .youtube-section{

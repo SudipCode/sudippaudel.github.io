@@ -32,7 +32,10 @@ const initNepaliClock = () => {
     clock.innerHTML = `
         <div class="nepali-clock-meta">
             <span class="nepali-clock-label">नेपाल समय</span>
-            <button class="nepali-calendar-toggle" type="button" aria-expanded="false">Nepali Calendar</button>
+            <div class="nepali-widget-actions">
+                <button class="nepali-calendar-toggle" type="button" aria-expanded="false">Nepali Calendar</button>
+                <button class="nepali-hide-toggle" type="button" aria-label="Hide Nepal date and time">Hide</button>
+            </div>
         </div>
         <div class="nepali-clock-value" aria-live="polite">Loading...</div>
         <div class="nepali-calendar-panel" hidden></div>
@@ -42,15 +45,29 @@ const initNepaliClock = () => {
     const valueNode = clock.querySelector('.nepali-clock-value');
     const calendarToggle = clock.querySelector('.nepali-calendar-toggle');
     const calendarPanel = clock.querySelector('.nepali-calendar-panel');
+    const hideToggle = clock.querySelector('.nepali-hide-toggle');
 
     const updateCalendar = () => {
-        const nepalDate = new Intl.DateTimeFormat('en-US-u-ca-nepali', {
-            timeZone: 'Asia/Kathmandu',
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }).format(new Date());
+        const currentDate = new Date();
+        let nepalDate = '';
+
+        try {
+            nepalDate = new Intl.DateTimeFormat('en-US-u-ca-nepali', {
+                timeZone: 'Asia/Kathmandu',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(currentDate);
+        } catch (error) {
+            nepalDate = new Intl.DateTimeFormat('en-NP', {
+                timeZone: 'Asia/Kathmandu',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(currentDate);
+        }
 
         if (calendarPanel) {
             calendarPanel.textContent = nepalDate;
@@ -76,6 +93,14 @@ const initNepaliClock = () => {
         updateCalendar();
     };
 
+    const setCollapsed = (collapsed) => {
+        clock.classList.toggle('collapsed', collapsed);
+        if (hideToggle) {
+            hideToggle.textContent = collapsed ? 'Show' : 'Hide';
+            hideToggle.setAttribute('aria-label', collapsed ? 'Show Nepal date and time' : 'Hide Nepal date and time');
+        }
+    };
+
     if (calendarToggle && calendarPanel) {
         calendarToggle.onclick = () => {
             const isHidden = calendarPanel.hasAttribute('hidden');
@@ -85,6 +110,14 @@ const initNepaliClock = () => {
         };
     }
 
+    if (hideToggle) {
+        hideToggle.onclick = () => {
+            const isCollapsed = clock.classList.contains('collapsed');
+            setCollapsed(!isCollapsed);
+        };
+    }
+
+    setCollapsed(false);
     updateClock();
     setInterval(updateClock, 1000);
 };
