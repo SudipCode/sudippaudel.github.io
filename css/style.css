@@ -454,6 +454,73 @@ header .navbar a:hover::before{
     100% { transform: translateY(-2px); }
 }
 
+#nepali-time-widget{
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    min-width: 20rem;
+    max-width: 26rem;
+    padding: .8rem 1rem;
+    border-radius: 1.2rem;
+    background: rgba(15, 118, 110, 0.9);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(10px);
+    text-transform: none;
+}
+
+.nepali-clock-meta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .8rem;
+}
+
+.nepali-clock-label{
+    font-size: 1rem;
+    letter-spacing: .08rem;
+    opacity: .9;
+    text-transform: uppercase;
+}
+
+.nepali-calendar-toggle{
+    padding: .5rem .8rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.18);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,.2);
+}
+
+.nepali-calendar-toggle.active,
+.nepali-calendar-toggle:hover{
+    background: rgba(255,255,255,.28);
+}
+
+.nepali-clock-value{
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: none;
+    word-break: break-word;
+}
+
+.nepali-calendar-panel{
+    padding: .7rem .9rem;
+    border-radius: .8rem;
+    background: rgba(255,255,255,.12);
+    color: #eff6ff;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
 #menu-bars{
     position: fixed;
     z-index: 10000;
@@ -468,6 +535,41 @@ header .navbar a:hover::before{
     font-size: 3rem;
     display: none;
     animation: menu-pulse 2.8s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+    #nepali-time-widget {
+        top: .8rem;
+        left: 7.2rem;
+        right: .8rem;
+        min-width: 0;
+        max-width: none;
+        padding: .7rem .9rem;
+    }
+
+    .nepali-clock-value {
+        font-size: 1.2rem;
+    }
+
+    .nepali-clock-label {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #nepali-time-widget {
+        left: 6.2rem;
+        padding: .6rem .7rem;
+    }
+
+    .nepali-clock-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nepali-calendar-toggle {
+        width: 100%;
+    }
 }
 
 @keyframes menu-pulse{
