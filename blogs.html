@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sudip paudel</title>
+    <link rel="icon" href="images/sp.JPG">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="blogs-page">
+    
+    <div id="theme-panel" class="open">
+        <div class="theme-menu">
+            <button class="theme-option" data-theme="red" aria-label="Red theme"><i class="fas fa-circle"></i></button>
+            <button class="theme-option" data-theme="yellow" aria-label="Yellow theme"><i class="fas fa-circle"></i></button>
+            <button class="theme-option" data-theme="green" aria-label="Green theme"><i class="fas fa-circle"></i></button>
+            <button class="theme-option" data-theme="teal" aria-label="Teal theme"><i class="fas fa-circle"></i></button>
+            <button id="day-night-toggle" class="day-night-toggle" aria-label="Toggle day and night mode"><i class="fas fa-moon"></i></button>
+        </div>
+        <button id="theme-toggler" class="settings-toggle" aria-label="Open settings"><i class="fas fa-cog"></i></button>
+    </div>
+
+<!-- header section starts  -->
+
+
+<header>
+    <div id="menu-bars" class="fas fa-bars"></div>
+
+      
+<nav class="navbar">
+    <a href="index.html">home</a>
+    <a href="about.html">about</a>
+    <a href="services.html">services</a>
+    <a href="portfolio.html">portfolio</a>
+    <a href="blogs.html">blogs</a>
+    <a href="image.html">gallery</a>
+</nav>
+
+</header>
+
+
+
+<main class="video-library">
+    <div class="video-intro">
+        <p class="eyebrow"><i class="fas fa-play-circle"></i> field notes & visual projects</p>
+        <h1 class="heading"><span>my</span> video journal</h1>
+        <p class="intro-copy">A small collection of experiments, builds, and moments from the workbench.</p>
+    </div>
+
+    <div class="blog-tools is-hidden" aria-label="Useful tools" style="display: none;">
+        <div class="tool-card">
+            <label for="youtube-video-link">Paste YouTube video link</label>
+            <div class="tool-row">
+                <input id="youtube-video-link" class="tool-input" type="url" placeholder="https://youtu.be/..." />
+                <button class="btn blog-tool-btn" type="button" data-tool="video">Download Video</button>
+            </div>
+        </div>
+
+        <div class="tool-card">
+            <label for="youtube-audio-link">Paste YouTube link for MP3</label>
+            <div class="tool-row">
+                <input id="youtube-audio-link" class="tool-input" type="url" placeholder="https://youtu.be/..." />
+                <button class="btn blog-tool-btn" type="button" data-tool="audio">Convert MP3</button>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    
+    <div class="main-video">
+        <div class="video">
+            <video src="video/Welcome.mp4" controls muted autoplay></video>
+            <h3 class = "title">01 Welcome </h3>
+        </div>
+    </div>
+<div class="video-list">
+    <div class ="vid active">
+        <video src="video/Welcome.mp4" controls muted ></video>
+        <h3 class = "title">01 Welcome </h3>
+    </div>
+    <div class ="vid">
+        <video src="video/voice auto.mp4" controls muted ></video>
+        <h3 class = "title">02 Arduino voice control home automation</h3>
+    </div>
+ 
+    <div class ="vid">
+        <video src="video/eye.mp4" controls muted ></video>
+        <h3 class = "title">03 eye </h3>
+    </div>
+    <div class ="vid">
+        <video src="video/Flight .mp4" controls muted ></video>
+        <h3 class = "title">04 dron short </h3>
+    </div>
+ 
+    <div class ="vid">
+        <video src="video/video 3.mp4" controls muted ></video>
+        <h3 class = "title">05 night fa-moon </h3>
+    </div>
+    <div class ="vid">
+        <video src="video/video 2.mp4" controls muted ></video>
+        <h3 class = "title">06 green mountain</h3>
+    </div>
+    
+    
+</div>
+</div>
+
+    <!--
+    <section class="youtube-section" aria-labelledby="youtube-heading">
+        <div class="youtube-heading-row">
+            <div>
+                <p class="eyebrow"><i class="fab fa-youtube"></i> external collection</p>
+                <h2 id="youtube-heading">My YouTube collection</h2>
+                <p>Curated videos and projects selected by Sudip Paudel.</p>
+            </div>
+        </div>
+
+        <div class="youtube-grid" id="youtube-grid"></div>
+    </section>
+    -->
+</main>
+
+
+
+<section class="footer">
+
+    <div class="links">
+       
+        <a class="btn" href="image.html">gallery</a>
+     </div>
+
+    <div class="social-links" aria-label="Social media links">
+        <!--- <a href="https://github.com/sudippaudel" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a> --->
+        <a href="https://www.facebook.com/share/1CvhUfKWnJ/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:mr.spaudel11@gmail.com" aria-label="Email Sudip Paudel" title="Email: mr.spaudel11@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/9779845213480" target="_blank" rel="noopener" aria-label="WhatsApp: +977 9845213480" title="WhatsApp: +977 9845213480"><i class="fab fa-whatsapp"></i></a>
+    </div>
+ 
+    <div class="credit"> created by <span> MR.SUDIP PAUDEL</span> | all rights reserved! </div>
+ 
+ </section>
+    
+<div class ="loader-container">
+    <img src="images/motion.gif" alt="">
+</div>
+
+
+<!-- typed.js link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+
+<!-- particles.js links  -->
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/tex.js"></script>
+<script src="js/daynight.js"></script>
+<script src="js/video.js"></script>
+<script src="js/loader.js"></script>
+<script>
+    document.querySelectorAll('[data-tool]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const tool = button.dataset.tool;
+            const inputId = tool === 'video' ? 'youtube-video-link' : 'youtube-audio-link';
+            const input = document.getElementById(inputId);
+            const value = input ? input.value.trim() : '';
+
+            if (!value) {
+                alert('Please paste a YouTube video link first.');
+                input && input.focus();
+                return;
+            }
+
+            const encodedUrl = encodeURIComponent(value);
+            const destination = tool === 'video'
+                ? `https://www.y2mate.com/?url=${encodedUrl}`
+                : `https://www.y2mate.com/youtube-to-mp3?url=${encodedUrl}`;
+
+            window.open(destination, '_blank', 'noopener,noreferrer');
+        });
+    });
+</script>
+
+
+<!-- vanilla-tilt.js link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+
+
+
+</body>
+</html>
