@@ -73,7 +73,8 @@ body{
 /*try*/
 
 body.active{
-    --black:rgb(22, 11, 11);
+    --black:#edf6ff;
+    --blue:#edf6ff;
     --light-color:#ddd;
     --bg-color:rgb(32, 30, 32);
     --nav-bg:rgba(15, 16, 24, 0.98);
@@ -92,27 +93,37 @@ body.active{
     background-image: radial-gradient(circle at 15% 10%, rgba(45, 212, 191, .08), transparent 28rem), linear-gradient(135deg, #1f2937, #111827);
 }
 
-body.active p,
-body.active h1,
-body.active h2,
-body.active h3,
-body.active h4,
-body.active h5,
-body.active h6,
-body.active li,
-body.active span,
-body.active a,
-body.active label,
-body.active input,
-body.active textarea,
-body.active .title,
-body.active .credit,
-body.active .content,
-body.active .box,
-body.active .info,
-body.active .box-container,
-body.active .box p {
+body.active * {
+    color: #edf6ff !important;
+}
+
+body.active input::placeholder,
+body.active textarea::placeholder {
     color: #edf6ff;
+}
+
+body.active .services .box-container .box,
+body.active .blogs .box-container .box,
+body.active .contact .row form,
+body.active .portfolio .box-container .box .content,
+body.active .container .main-video,
+body.active .container .video-list,
+body.active .tool-card,
+body.active .youtube-section,
+body.active .youtube-card {
+    background: #111827;
+}
+
+body.active .container .video-list .vid {
+    background: #1f2937;
+}
+
+body.active .contact .row form .inputBox input,
+body.active .contact .row form .box,
+body.active .contact .row form textarea,
+body.active .tool-input,
+body.active .youtube-form input {
+    background: #1f2937;
 }
 
 button{
