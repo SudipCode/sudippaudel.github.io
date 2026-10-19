@@ -14,7 +14,9 @@ const hideLoader = () => {
 };
 
 if (document.readyState === 'complete') {
-  hideLoader();
+  window.setTimeout(hideLoader, 5000);
 } else {
-  window.addEventListener('load', hideLoader, { once: true });
+  window.addEventListener('load', () => {
+    window.setTimeout(hideLoader, 5000);
+  }, { once: true });
 }
