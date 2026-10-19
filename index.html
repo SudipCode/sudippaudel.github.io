@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('site-loading');</script>
     <title>sudip paudel</title>
     <link rel="icon" href="images/sp.JPG">
     <!-- font awesome cdn link  -->
@@ -14,7 +15,9 @@
 
 </head>
 <body>
-    <div id="preloader"></div>
+    <div class="loader-container" role="status" aria-label="Loading website">
+        <img src="images/motion.gif" alt="">
+    </div>
 
     <div id="theme-panel">
         <div class="theme-menu">
@@ -56,7 +59,7 @@
 
     <div class="content">
         <img class="tilt" src="images/main1.jpeg" alt="">
-        <h3> Sudip <span>Paudel.</span> </h3>
+        <h3>Sudip <span>Paudel.</span></h3>
         <p> I am a <span class="typing-text">...</span> </p>
         <a href="#about" class="btn">about me</a>
     </div>
@@ -314,11 +317,6 @@
     <div class="credit"> created by <span>SUDIP PAUDEL</span> | all rights reserved! </div>
  
  </section>
- <div class ="loader-container">
-    <img src="images/motion.gif" alt="">
-</div>
-
-
 <!-- typed.js link  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 

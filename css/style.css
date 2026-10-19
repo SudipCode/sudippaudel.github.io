@@ -157,27 +157,47 @@ section{
     color:rgb(139, 177, 161);
     letter-spacing: .2rem;
  }
- .loader-container{
+.loader-container{
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    inset: 0;
     z-index: 10000;
-    background: #fff;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: #fff;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .35s ease, visibility .35s ease;
+}
 
- }
- .loader-container img{
-    width: 35rem;
- }
- .loader-container.fade-out{
-    top: 110%;
+.site-loading .loader-container{
+    display: flex;
+}
+
+.loader-container img{
+    display: block;
+    width: min(20rem, 70vw);
+    height: auto;
+    object-fit: contain;
+}
+
+.loader-container.is-hidden{
     opacity: 0;
- }
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.site-loading{
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .loader-container{
+        transition: none;
+    }
+}
+
 .heading{
     text-align: center;
     font-size: 5rem;
@@ -740,24 +760,12 @@ header .navbar a:hover::before{
     color:var(--blue);
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
-    animation: name-reveal .9s cubic-bezier(.22, .8, .35, 1) both;
 
 }
 
 .home .content h3 span{
     color:var(--gold);
     text-transform: uppercase;
-    animation: name-accent 3s ease-in-out 1s infinite;
-}
-
-@keyframes name-reveal{
-    from { opacity: 0; transform: translateY(1.4rem); letter-spacing: .28rem; }
-    to { opacity: 1; transform: translateY(0); letter-spacing: 0; }
-}
-
-@keyframes name-accent{
-    0%, 100% { color: var(--gold); text-shadow: none; }
-    50% { color: var(--theme-accent); text-shadow: 0 0 .9rem rgba(45,212,191,.45); }
 }
 
 .home .content p{
@@ -2376,4 +2384,5 @@ textarea:focus-visible{
     .home .content img{
         animation: none;
     }
+
 }

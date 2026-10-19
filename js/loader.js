@@ -1,9 +1,20 @@
-function loader(){
-    document.querySelector('.loader-container').classList.add('fade-out');
-}
+const loader = document.querySelector('.loader-container');
 
-function fadeOut(){
-    setTimeout(loader,3000);
-}
+const hideLoader = () => {
+  if (!loader) {
+    document.documentElement.classList.remove('site-loading');
+    return;
+  }
 
-window.addEventListener('load', fadeOut);
+  loader.classList.add('is-hidden');
+  window.setTimeout(() => {
+    loader.remove();
+    document.documentElement.classList.remove('site-loading');
+  }, 400);
+};
+
+if (document.readyState === 'complete') {
+  hideLoader();
+} else {
+  window.addEventListener('load', hideLoader, { once: true });
+}
