@@ -73,6 +73,27 @@ if (skillsSection && 'IntersectionObserver' in window) {
     setInterval(replaySkillAnimation, 20000);
 }
 
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealTargets = document.querySelectorAll(
+  '.home, .about, .meabout, .Design, .services, .portfolio, .contact, .video-intro, .container, .gallery'
+);
+
+if ('IntersectionObserver' in window && !motionPreference.matches) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+  revealTargets.forEach((target) => {
+    target.classList.add('reveal-on-scroll');
+    revealObserver.observe(target);
+  });
+}
+
 window.addEventListener('load', () => {
 
     const header2 = document.querySelector('.header .header-2');
